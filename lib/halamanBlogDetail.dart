@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:latihan_responsi/model/newsModel.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class HalamanBeritaDetail extends StatelessWidget {
-  final Results newsModel;
+import 'model/blogModel.dart';
 
-  const HalamanBeritaDetail({required this.newsModel, Key? key}) : super(key: key);
+class HalamanBlogDetail extends StatelessWidget {
+  final Results blogModel;
+  const HalamanBlogDetail({required this.blogModel, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('NEWS DETAIL')),
+        title: Center(child: Text('BLOG DETAIL')),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -21,19 +21,19 @@ class HalamanBeritaDetail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.network(
-                newsModel.imageUrl!,
+                blogModel.imageUrl!,
                 width: MediaQuery.of(context).size.width,
                 fit: BoxFit.cover,
               ),
               SizedBox(height: 10),
               Text(
-                newsModel.title!,
+                blogModel.title!,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10),
-              Text(newsModel.publishedAt!),
+              Text(blogModel.publishedAt!),
               SizedBox(height: 10),
-              Text(newsModel.summary!),
+              Text(blogModel.summary!),
               SizedBox(height: 60,)
               // Tambahkan informasi lainnya sesuai kebutuhan
             ],
@@ -42,10 +42,10 @@ class HalamanBeritaDetail extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          _launchURL(newsModel.url!);
+          _launchURL(blogModel.url!);
         },
         icon: Icon(Icons.link),
-        label: Text('Website : ' + newsModel.newsSite!),
+        label: Text('Website : ' +blogModel.newsSite!),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(16.0)),
         ),

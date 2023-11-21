@@ -1,18 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:latihan_responsi/model/newsModel.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'model/reportModel.dart';
 
-class HalamanBeritaDetail extends StatelessWidget {
-  final Results newsModel;
-
-  const HalamanBeritaDetail({required this.newsModel, Key? key}) : super(key: key);
+class HalamanReportDetail extends StatelessWidget {
+  final Results reportModel;
+  const HalamanReportDetail({required this.reportModel, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('NEWS DETAIL')),
+        title: Center(child: Text('BLOG DETAIL')),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -21,19 +20,19 @@ class HalamanBeritaDetail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.network(
-                newsModel.imageUrl!,
+                reportModel.imageUrl!,
                 width: MediaQuery.of(context).size.width,
                 fit: BoxFit.cover,
               ),
               SizedBox(height: 10),
               Text(
-                newsModel.title!,
+                reportModel.title!,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10),
-              Text(newsModel.publishedAt!),
+              Text(reportModel.publishedAt!),
               SizedBox(height: 10),
-              Text(newsModel.summary!),
+              Text(reportModel.summary!),
               SizedBox(height: 60,)
               // Tambahkan informasi lainnya sesuai kebutuhan
             ],
@@ -42,10 +41,10 @@ class HalamanBeritaDetail extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          _launchURL(newsModel.url!);
+          _launchURL(reportModel.url!);
         },
         icon: Icon(Icons.link),
-        label: Text('Website : ' + newsModel.newsSite!),
+        label: Text('Website : ' +reportModel.newsSite!),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(16.0)),
         ),
